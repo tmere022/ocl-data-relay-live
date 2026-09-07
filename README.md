@@ -1,21 +1,9 @@
-# git-scraper-template
+# OCL Data Relay (Live)
 
-Template repository for setting up a new [Git scraper](https://simonwillison.net/2020/Oct/9/git-scraping/) using GitHub Actions.
+Automated validated mirror of the Office of the Commissioner of Lobbying of Canada public bulk datasets.
 
-## How to use this
+The inherited GitHub Actions scheduler runs daily. It downloads both official archives into temporary storage, performs full ZIP CRC and required-file validation, publishes an immutable release, and only then commits manifest.json. Consumers verify byte size and SHA-256 before installing.
 
-Visit https://github.com/simonw/git-scraper-template/generate
-
-Pick a name for your new repository, then paste **the URL** of the page you would like to take scrape into the **description field** (including the `http://` or `https://`). JSON works best, but any URL will be fetched and saved.
-
-Then click **Create repository from template**.
-
-Your new repository will be created, and a script will run which will do the following:
-
-- Add a `scrape.sh` script to your repository which uses `curl` via the `./download.sh` script to fetch and save the URL you requested
-- Run that `./scrape.sh` command and commit the result to the repository
-- Configure a schedule to run this script once every 24 hours
-
-You can edit `scrape.sh` to customize what is scraped, and you can edit `.github/workflows/scrape.yml` to change how often the scraping happens.
-
-If you want to use Python in your scraper you can uncomment the relevant block in `scrape.yml` and add a `requirements.txt` file to your repository containing any dependencies you need.
+Public source catalogues:
+- Communications: https://open.canada.ca/data/en/dataset/a34eb330-7136-4f5e-9f5f-3ba41df58b06
+- Registrations: https://open.canada.ca/data/en/dataset/70ef2117-1095-4d77-80eb-b87f2bada2a4
